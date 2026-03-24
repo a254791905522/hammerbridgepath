@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammer Bridge Path | Build, Smash & Conquer</title>
+    <meta name="description"
+        content="Hammer Bridge Path - Tap and hold to stretch your hammer across platforms, smash enemies, collect points and master the perfect strike!">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(165deg, #1a0a02 0%, #2a1508 25%, #1e0f05 50%, #120800 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 25% 15%, rgba(255, 120, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 25%, rgba(255, 60, 0, 0.07) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 85%, rgba(255, 165, 0, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(180, 80, 0, 0.06) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(1.5px 1.5px at 10% 20%, rgba(255, 180, 50, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 30% 70%, rgba(255, 140, 20, 0.35) 0%, transparent 100%),
+                radial-gradient(2px 2px at 70% 15%, rgba(255, 200, 80, 0.45) 0%, transparent 100%),
+                radial-gradient(1px 1px at 90% 60%, rgba(255, 160, 30, 0.3) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 50% 45%, rgba(255, 220, 100, 0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 60% 90%, rgba(255, 130, 10, 0.35) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+            animation: sparks 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes sparks {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .crack-left,
+        .crack-right {
+            position: fixed;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.08;
+        }
+
+        .crack-left {
+            left: 0;
+            background: repeating-linear-gradient(175deg,
+                    transparent 0px, transparent 40px,
+                    rgba(255, 120, 0, 0.6) 40px, rgba(255, 120, 0, 0.6) 42px,
+                    transparent 42px, transparent 100px);
+        }
+
+        .crack-right {
+            right: 0;
+            background: repeating-linear-gradient(185deg,
+                    transparent 15px, transparent 55px,
+                    rgba(255, 120, 0, 0.6) 55px, rgba(255, 120, 0, 0.6) 57px,
+                    transparent 57px, transparent 110px);
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(20, 10, 2, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 120, 0, 0.25);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(255, 120, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04),
+                0 0 60px rgba(255, 100, 0, 0.06);
+            max-width: 660px;
+            width: 100%;
+            padding: 48px 42px;
+            text-align: center;
+        }
+
+        .app-icon {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(145deg, #8B4513 0%, #A0522D 30%, #CD853F 60%, #8B4513 100%);
+            border-radius: 30px;
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow:
+                0 15px 45px rgba(255, 100, 0, 0.3),
+                0 0 50px rgba(200, 80, 0, 0.12),
+                inset 0 2px 10px rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 180, 80, 0.3);
+            transition: transform 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 200, 100, 0.15) 50%, transparent 60%);
+            animation: iconShine 3.5s ease-in-out infinite;
+        }
+
+        @keyframes iconShine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .app-icon:hover {
+            transform: scale(1.1) rotate(8deg);
+        }
+
+        h1 {
+            font-family: 'Bungee', cursive;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF9500 35%, #FFD700 65%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.4em;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #c49a6c;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .tagline {
+            background: linear-gradient(135deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .hammer-icon {
+            display: inline-block;
+            -webkit-text-fill-color: #FF8C00;
+            animation: hammerSwing 1.5s ease-in-out infinite;
+            transform-origin: bottom right;
+        }
+
+        @keyframes hammerSwing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-20deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .description {
+            color: #c4a882;
+            line-height: 1.85;
+            font-size: 1.02em;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .description p {
+            margin-bottom: 14px;
+        }
+
+        .gameplay-section {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 24px 26px;
+            background: linear-gradient(145deg, rgba(255, 120, 0, 0.08) 0%, rgba(139, 69, 19, 0.06) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 120, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gameplay-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #FF6B00, #FFD700);
+            border-radius: 4px;
+        }
+
+        .gameplay-section h3 {
+            color: #FFD700;
+            margin-bottom: 16px;
+            font-size: 1.15em;
+            font-weight: 700;
+            padding-left: 8px;
+            font-family: 'Bungee', cursive;
+        }
+
+        .gameplay-section ol {
+            padding-left: 30px;
+            color: #c4a882;
+        }
+
+        .gameplay-section li {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .gameplay-section li::marker {
+            color: #FF8C00;
+            font-weight: 700;
+        }
+
+        .features {
+            text-align: left;
+            margin-bottom: 34px;
+        }
+
+        .features h3 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            font-size: 1.2em;
+            font-weight: 700;
+            font-family: 'Bungee', cursive;
+        }
+
+        .features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .features li {
+            color: #c4a882;
+            padding: 12px 0;
+            padding-left: 36px;
+            position: relative;
+            line-height: 1.55;
+        }
+
+        .features li::before {
+            content: "\1F528";
+            position: absolute;
+            left: 0;
+            font-size: 0.9em;
+        }
+
+        .features li:nth-child(even)::before {
+            content: "\26A1";
+        }
+
+        .features li:nth-child(3n)::before {
+            content: "\1F4A5";
+        }
+
+        .app-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-item {
+            background: rgba(255, 120, 0, 0.06);
+            border: 1px solid rgba(255, 120, 0, 0.12);
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+
+        .info-item .label {
+            color: #8a6a48;
+            font-size: 0.82em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-item .value {
+            color: #dab888;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .app-store-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #CC5500 0%, #FF8C00 50%, #FFD700 100%);
+            color: #1a0a02;
+            padding: 16px 42px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-size: 1.15em;
+            font-weight: 700;
+            transition: transform 0.25s, box-shadow 0.25s;
+            margin-top: 10px;
+            border: none;
+            box-shadow:
+                0 10px 35px rgba(255, 100, 0, 0.35),
+                0 0 50px rgba(255, 140, 0, 0.08);
+            letter-spacing: 0.3px;
+        }
+
+        .app-store-button:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow:
+                0 15px 45px rgba(255, 100, 0, 0.5),
+                0 0 60px rgba(255, 140, 0, 0.15);
+            text-decoration: none;
+            color: #1a0a02;
+        }
+
+        .app-store-button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 120, 0, 0.12);
+            font-size: 0.9em;
+            color: #6b5038;
+        }
+
+        .footer a {
+            color: #FF8C00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: #FFD700;
+        }
+
+        .footer p {
+            margin: 6px 0;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.7em;
+            }
+
+            .app-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 46px;
+                border-radius: 24px;
+            }
+
+            .app-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="crack-left"></div>
+    <div class="crack-right"></div>
+
+    <div class="container">
+        <div class="app-icon">🔨</div>
+        <h1>Hammer Bridge Path</h1>
+        <p class="subtitle">One Tap. One Perfect Bridge.</p>
+        <p class="tagline">
+            <span class="hammer-icon">⚒️</span>
+            Build. Smash. Conquer Every Gap!
+            <span class="hammer-icon">⚒️</span>
+        </p>
+
+        <div class="description">
+            <p>Hammer Bridge Path is an exciting arcade adventure where you build powerful hammers to bridge gaps and crush monster faces! Tap and hold to stretch your hammer across platforms — but make sure it's just the right length!</p>
+            <p>Smash enemies, collect points, and test your timing and precision as you travel through a path full of danger and destruction. Can you master the perfect strike and become the ultimate gap-crossing crusher?</p>
+        </div>
+
+        <div class="gameplay-section">
+            <h3>How to Play</h3>
+            <ol>
+                <li>Tap and hold to grow your hammer — the longer you hold, the longer it stretches</li>
+                <li>Release at the perfect moment to bridge the gap between platforms</li>
+                <li>Too short and you'll fall; too long and you'll overshoot — precision is key!</li>
+                <li>Smash through monster faces blocking your path for bonus points</li>
+                <li>Keep advancing through increasingly challenging levels and obstacles</li>
+            </ol>
+        </div>
+
+        <div class="features">
+            <h3>Why You'll Love It</h3>
+            <ul>
+                <li>Simple one-tap controls — easy to learn, tough to master</li>
+                <li>Satisfying hammer-smashing physics and destruction effects</li>
+                <li>Crush monsters and enemies as you bridge your way forward</li>
+                <li>Progressively challenging levels that test your timing precision</li>
+                <li>Addictive arcade action you can enjoy in quick sessions</li>
+                <li>Free to play — jump right into the smashing action</li>
+                <li>Optimized for both iPhone and iPad</li>
+                <li>Exciting adventure through dangerous, gap-filled worlds</li>
+            </ul>
+        </div>
+
+        <div class="app-info">
+            <div class="info-item">
+                <div class="label">Category</div>
+                <div class="value">Adventure</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Price</div>
+                <div class="value">Free</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Size</div>
+                <div class="value">27.1 MB</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Requires</div>
+                <div class="value">iOS 15.0+</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Age Rating</div>
+                <div class="value">13+</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Language</div>
+                <div class="value">English</div>
+            </div>
+        </div>
+
+        <a href="https://apps.apple.com/us/app/hammer-bridge-path/id6748204737?uo=4" class="app-store-button"
+            target="_blank" rel="noopener noreferrer">
+            Download Free on App Store
+        </a>
+
+        <div class="footer">
+            <p><a href="/privacy.html">Privacy Policy</a></p>
+            <p>Contact: <a href="mailto:LucertiniPasang609@gmail.com">LucertiniPasang609@gmail.com</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

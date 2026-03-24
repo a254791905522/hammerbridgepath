@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammer Bridge Path | Privacy Policy</title>
+    <meta name="description"
+        content="Privacy Policy for Hammer Bridge Path. Learn how we handle your data while you smash and bridge your way through adventure.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.8;
+            color: #c4a882;
+            background: linear-gradient(165deg, #1a0a02 0%, #2a1508 25%, #1e0f05 50%, #120800 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 10%, rgba(255, 120, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 25%, rgba(255, 80, 0, 0.05) 0%, transparent 45%),
+                radial-gradient(ellipse at 45% 80%, rgba(255, 160, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .nav-bar {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #a07850;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 10px 18px;
+            border-radius: 12px;
+            background: rgba(255, 120, 0, 0.06);
+            border: 1px solid rgba(255, 120, 0, 0.12);
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            color: #FFD700;
+            background: rgba(255, 120, 0, 0.12);
+            text-decoration: none;
+        }
+
+        .main-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+            margin: 0 auto;
+            background: rgba(20, 10, 2, 0.93);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 50px 48px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 120, 0, 0.18);
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 120, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 44px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid rgba(255, 120, 0, 0.1);
+        }
+
+        .page-header-icon {
+            font-size: 52px;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Bungee', cursive;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF9500 40%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.1em;
+            margin-bottom: 6px;
+        }
+
+        .page-header-app {
+            color: #8a6a48;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .date-badge {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 7px 20px;
+            background: rgba(255, 120, 0, 0.08);
+            border: 1px solid rgba(255, 120, 0, 0.15);
+            border-radius: 22px;
+            color: #c49a6c;
+            font-size: 0.88em;
+            font-weight: 500;
+        }
+
+        .highlight-strip {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(255, 120, 0, 0.07) 0%, rgba(139, 69, 19, 0.05) 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 140, 0, 0.15);
+            align-items: center;
+        }
+
+        .highlight-strip-icon {
+            font-size: 40px;
+            flex-shrink: 0;
+        }
+
+        .highlight-strip-body {
+            text-align: left;
+        }
+
+        .highlight-strip-body strong {
+            display: block;
+            color: #FF8C00;
+            font-size: 1.2em;
+            margin-bottom: 3px;
+            font-family: 'Bungee', cursive;
+        }
+
+        .highlight-strip-body span {
+            color: #b08860;
+            font-size: 0.95em;
+        }
+
+        .policy-block {
+            margin-bottom: 36px;
+            padding: 28px;
+            background: rgba(255, 120, 0, 0.03);
+            border-radius: 18px;
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, #FF6B00, #FFD700) 1;
+        }
+
+        .policy-block h2 {
+            font-family: 'Bungee', cursive;
+            color: #FFD700;
+            font-size: 1.15em;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-block h2 .block-emoji {
+            font-size: 1.3em;
+        }
+
+        .policy-block p {
+            margin: 10px 0;
+            color: #b8946e;
+            font-size: 0.98em;
+        }
+
+        .data-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 18px 0;
+        }
+
+        .tile {
+            background: rgba(20, 10, 2, 0.7);
+            border: 1px solid rgba(255, 120, 0, 0.1);
+            border-radius: 14px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .tile:hover {
+            border-color: rgba(255, 140, 0, 0.3);
+        }
+
+        .tile .tile-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .tile strong {
+            color: #dab888;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.88em;
+        }
+
+        .tile span {
+            color: #907050;
+            font-size: 0.82em;
+            line-height: 1.4;
+        }
+
+        .shield-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .shield-list li {
+            padding: 12px 0 12px 38px;
+            position: relative;
+            color: #b8946e;
+            font-size: 0.96em;
+            border-bottom: 1px solid rgba(255, 120, 0, 0.06);
+        }
+
+        .shield-list li:last-child {
+            border-bottom: none;
+        }
+
+        .shield-list li::before {
+            content: "🛡️";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            font-size: 0.95em;
+        }
+
+        .callout-box {
+            background: rgba(255, 200, 0, 0.04);
+            border: 1px solid rgba(255, 200, 0, 0.12);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .callout-box .callout-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .callout-box p {
+            margin: 0;
+            color: #c4a060;
+            font-size: 0.94em;
+        }
+
+        a {
+            color: #FF8C00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            color: #FFD700;
+            text-decoration: underline;
+        }
+
+        .separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 120, 0, 0.15), transparent);
+            margin: 36px 0;
+        }
+
+        .contact-area {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 120, 0, 0.06) 0%, rgba(139, 69, 19, 0.04) 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 120, 0, 0.1);
+            margin-top: 36px;
+        }
+
+        .contact-area h3 {
+            font-family: 'Bungee', cursive;
+            color: #FFD700;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .contact-area p {
+            margin: 6px 0;
+        }
+
+        .store-btn {
+            display: inline-block;
+            margin-top: 22px;
+            color: #1a0a02;
+            font-weight: 700;
+            padding: 14px 34px;
+            background: linear-gradient(135deg, #CC5500 0%, #FF8C00 50%, #FFD700 100%);
+            border-radius: 16px;
+            border: none;
+            transition: all 0.25s;
+            box-shadow:
+                0 8px 28px rgba(255, 100, 0, 0.3),
+                0 0 40px rgba(255, 140, 0, 0.06);
+            font-size: 1.05em;
+            letter-spacing: 0.3px;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow:
+                0 12px 38px rgba(255, 100, 0, 0.45),
+                0 0 55px rgba(255, 140, 0, 0.12);
+            text-decoration: none;
+            color: #1a0a02;
+        }
+
+        .copy-text {
+            text-align: center;
+            color: #4a3520;
+            font-size: 0.85em;
+            margin-top: 36px;
+        }
+
+        @media (max-width: 600px) {
+            .main-wrap {
+                padding: 30px 22px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .data-tiles {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-strip {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .highlight-strip-body {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <a href="/index.html" class="back-link">&larr; Back to Home</a>
+    </div>
+
+    <div class="main-wrap">
+        <div class="page-header">
+            <span class="page-header-icon">🔨</span>
+            <h1>Privacy Policy</h1>
+            <p class="page-header-app">Hammer Bridge Path</p>
+            <span class="date-badge">Effective Date: March 24, 2026</span>
+        </div>
+
+        <div class="highlight-strip">
+            <span class="highlight-strip-icon">🔒</span>
+            <div class="highlight-strip-body">
+                <strong>Zero Data Collection</strong>
+                <span>Hammer Bridge Path does not collect any personal data from its users. Your smashing adventure remains completely private.</span>
+            </div>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">📜</span> About This Policy</h2>
+            <p>This Privacy Policy applies to the Hammer Bridge Path mobile application ("the App", "we", "our", or "us"). We are committed to being transparent about our data practices. This document explains what information we do and do not collect when you use our app to build hammer bridges, crush monsters, and conquer gaps. Privacy is fundamental to our design philosophy, and we built Hammer Bridge Path with that principle at its core.</p>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">🚫</span> Data We Do Not Collect</h2>
+            <p>We want to be absolutely clear: Hammer Bridge Path does not collect, process, transmit, or store any personal information. This includes but is not limited to:</p>
+
+            <div class="data-tiles">
+                <div class="tile">
+                    <span class="tile-icon">🙅</span>
+                    <strong>Identity Info</strong>
+                    <span>No names, emails, or phone numbers</span>
+                </div>
+                <div class="tile">
+                    <span class="tile-icon">📡</span>
+                    <strong>Location</strong>
+                    <span>No GPS or IP-based tracking</span>
+                </div>
+                <div class="tile">
+                    <span class="tile-icon">📈</span>
+                    <strong>Analytics</strong>
+                    <span>No usage patterns or session logs</span>
+                </div>
+                <div class="tile">
+                    <span class="tile-icon">📱</span>
+                    <strong>Device Data</strong>
+                    <span>No hardware IDs or fingerprints</span>
+                </div>
+                <div class="tile">
+                    <span class="tile-icon">💳</span>
+                    <strong>Financial</strong>
+                    <span>No payment or billing details</span>
+                </div>
+                <div class="tile">
+                    <span class="tile-icon">🌐</span>
+                    <strong>Network</strong>
+                    <span>No browsing history or cookies</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">✅</span> Your Privacy Commitments</h2>
+            <ul class="shield-list">
+                <li>No account registration or sign-in is required to enjoy the game</li>
+                <li>No third-party analytics frameworks or tracking SDKs are embedded</li>
+                <li>No behavioral advertising or ad-tracking networks are used</li>
+                <li>All game progress and settings are stored exclusively on your local device</li>
+                <li>No data of any kind is transmitted to external servers</li>
+                <li>No social media integrations that could share your activity</li>
+            </ul>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">💾</span> On-Device Storage</h2>
+            <p>Hammer Bridge Path may save game-related preferences and progress data locally on your device to enhance your gameplay experience. This data is stored using standard iOS storage mechanisms, never leaves your device, and cannot be accessed by us or any third party. Uninstalling the app will permanently remove all locally stored data.</p>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">👾</span> Third-Party Services</h2>
+            <p>Hammer Bridge Path operates as a fully self-contained application. We do not integrate any third-party SDKs, services, or frameworks that collect user data. There are no external analytics platforms, no embedded advertising networks, and no social media plugins within the app.</p>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">👨‍👩‍👦</span> Age Considerations</h2>
+            <p>Hammer Bridge Path is rated 13+ and contains infrequent cartoon or fantasy violence. Since we collect absolutely no personal data, the app maintains a strong privacy posture for users of all ages. We do not knowingly target or collect information from children under 13.</p>
+            <div class="callout-box">
+                <span class="callout-icon">⚠️</span>
+                <p>We recommend that parents and guardians monitor their children's use of all mobile applications and review relevant privacy policies. While Hammer Bridge Path collects no data, responsible digital habits start with awareness.</p>
+            </div>
+        </div>
+
+        <div class="policy-block">
+            <h2><span class="block-emoji">🔄</span> Policy Updates</h2>
+            <p>This Privacy Policy may be revised from time to time to reflect updates in our practices or changes required by applicable law. When changes are made, the revised policy will be posted on this page with an updated effective date. We encourage you to review this policy periodically to stay informed about how we protect your privacy.</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="contact-area">
+            <h3>Got Questions?</h3>
+            <p>If you have any questions or concerns about this Privacy Policy or the data practices of Hammer Bridge Path, feel free to reach out:</p>
+            <p><a href="mailto:LucertiniPasang609@gmail.com">LucertiniPasang609@gmail.com</a></p>
+
+            <a href="https://apps.apple.com/us/app/hammer-bridge-path/id6748204737?uo=4" class="store-btn"
+                target="_blank" rel="noopener noreferrer">
+                Download Free on App Store
+            </a>
+        </div>
+
+        <p class="copy-text">&copy; 2026 Hammer Bridge Path. All rights reserved.</p>
+    </div>
+</body>
+
+</html>
